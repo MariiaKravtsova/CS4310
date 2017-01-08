@@ -1,0 +1,3 @@
+This is stuff the book made me type.
+The book is so slow...
+Lots and lots of puts.
