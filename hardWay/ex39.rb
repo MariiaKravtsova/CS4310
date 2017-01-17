@@ -1,4 +1,4 @@
-states = {
+gstates = {
     'Oregon' => 'OR',
     'Florida' => 'FL',
     'California' => 'CA',
