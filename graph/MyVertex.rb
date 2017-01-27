@@ -1,5 +1,5 @@
 require "MyEdge"
 
-class MyVertex(label, value)
+class MyVertex(label=nil, value=0)
 
 end
