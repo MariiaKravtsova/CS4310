@@ -1,12 +1,10 @@
-require "MyVertex"
+#!/usr/bin/env ruby
 
-class MyEdge(label=nil, value=0)
+class MyEdge
   attr_accessor :label, :value
 
-  def initialize(label, value)
+  def initialize(label: nil, value: 0)
     @label = label
     @value = value
   end
-
-
 end
