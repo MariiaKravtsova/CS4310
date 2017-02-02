@@ -7,19 +7,25 @@ class MyGraph
 
   def initialize(options)
     @label = label
-    @graph = Hash.new
+    @vertices = Array.new
+    @edges = Array.new
     @options = Hash.new
   end
 
   def new_vertex(options)
     vertex = MyVertex.new(options)
-    @graph[vertex] = {}
+    @vertices.push(vertex)
   end
 
   def new_edge(w, v, options)
     edge = MyEdge.new(options)
-    graph[v] = {w => edge}
-    graph[w] = {v => edge}
+    edge.vertex_one = v
+    edge.vertex_two = w
+    @edges.push(edge)
+    v.adjecent = w
+    w.adjecent = v
+    puts edge.inspect
+    puts v.label, w.label
   end
 
   def remove_edge(v)
@@ -31,7 +37,7 @@ class MyGraph
   end
 
   def list_vertices()
-    @verteces.keys
+    @verteces
   end
 end
 
@@ -41,5 +47,7 @@ my_graph.new_vertex(label: "b")
 my_graph.new_vertex(label: "c")
 my_graph.new_vertex(value: 4)
 my_graph.new_vertex(value: 5)
-puts my_graph.num_vertices
-puts my_graph.list_vertices
+puts
+v = MyVertex.new(label: 'v')
+w = MyVertex.new(label: 'w')
+my_graph.new_edge(v, w, value: 120)
