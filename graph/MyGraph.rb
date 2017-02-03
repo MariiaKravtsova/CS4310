@@ -91,18 +91,4 @@ class MyGraph
   def are_adjacent(v, w)
     v.adjacent.include?(w) and w.adjacent.include?(v)
   end
-
-  def my_print()
-    new_edge(@vertices[0], @vertices[1], value:120)
-    puts deg_vertex(@vertices[0])
-    puts incident_edges(@vertices[0])
-
-    puts remove_vertex(@vertices[0])
-    puts deg_vertex(@vertices[0])
-    puts deg_vertex(@vertices[1])
-
-    puts
-    @vertices.each {|i| puts "#{i.label}, #{i.value}"}
-    @edges.each {|i| puts "#{i.label}, #{i.value}"}
-  end
 end
