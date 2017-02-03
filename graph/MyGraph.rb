@@ -3,7 +3,7 @@ require_relative 'MyEdge'
 require_relative 'MyVertex'
 
 class MyGraph
-  attr_accessor :label
+  attr_accessor :label, :vertices, :edges
 
   def initialize(options)
     @label = label
@@ -22,13 +22,28 @@ class MyGraph
       edge = MyEdge.new(options)
       edge.vertex_one = v
       edge.vertex_two = w
+      v.adjacent.push(w)
+      w.adjacent.push(v)
       @edges.push(edge)
-      @v.adjecent << w
+
     end
   end
 
-  def remove_edge(v)
+  def remove_edge(e)
+    if @edges.include?(e)
+      e.vertex_one.adjacent.delete_at(e.vertex_one.adjacent.find_index(e.vertex_two))
+      e.vertex_two.adjacent.delete_at(e.vertex_two.adjacent.find_index(e.vertex_one))
+      @edges.delete_at(@edges.find_index(e))
+    end
+  end
 
+  def remove_vertex(v)
+    @edges.each do |e|
+      if e.vertex_one.equal?(v) or e.vertex_two.equal?(v)
+        remove_edge(e)
+      end
+    end
+    @vertices.delete_at(@vertices.find_index(v))
   end
 
   def num_vertices()
@@ -48,32 +63,46 @@ class MyGraph
   end
 
   def vertex(v)
-    @vertices.find(v)
+    @vertices[@vertices.index(v)]
   end
 
   def deg_vertex(v)
-    @adjecent.length
+    v.adjacent.length
+  end
+
+  def incident_edges(v)
+    incident = Array.new
+    @edges.each do |e|
+      if e.vertex_one.equal?(v) or e.vertex_two.equal?(v)
+        incident << e
+      end
+    end
+    incident
+  end
+
+  def adjacent_vertices(v)
+    v.adjacent
+  end
+
+  def end_vertices(e)
+    return e.vertex_one, e.vertex_two
+  end
+
+  def are_adjacent(v, w)
+    v.adjacent.include?(w) and w.adjacent.include?(v)
   end
 
   def my_print()
     new_edge(@vertices[0], @vertices[1], value:120)
+    puts deg_vertex(@vertices[0])
+    puts incident_edges(@vertices[0])
+
+    puts remove_vertex(@vertices[0])
+    puts deg_vertex(@vertices[0])
+    puts deg_vertex(@vertices[1])
+
     puts
     @vertices.each {|i| puts "#{i.label}, #{i.value}"}
     @edges.each {|i| puts "#{i.label}, #{i.value}"}
   end
 end
-
-my_graph = MyGraph.new("mom")
-my_graph.new_vertex(label: "a")
-my_graph.new_vertex(label: "b")
-my_graph.new_vertex(label: "c")
-my_graph.new_vertex(value: 4)
-my_graph.new_vertex(value: 5)
-
-my_graph.my_print
-
-# v = MyVertex.new(label: 'a', value: 0)
-# w = MyVertex.new(label: 'b')
-# my_graph.new_edge(v, w, value: 120)
-
-# puts my_graph.deg_vertex(v)
