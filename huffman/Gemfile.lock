@@ -1,0 +1,12 @@
+GEM
+  specs:
+    algorithms (0.6.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  algorithms (~> 0.6.1)
+
+BUNDLED WITH
+   1.13.7
