@@ -32,16 +32,16 @@ class MyHuffman
     end
     while min_heap.size > 1 do
       tree = BinarySearchTree.new
-      f1 = min_heap.min
+      f1 = min_heap.next_key
       t1 = min_heap.min!
-      f2 = min_heap.min
+      f2 = min_heap.next_key
       t2 = min_heap.min!
       tree.insert(t1.root.key + t2.root.key)
       tree.insert(t1.root.key)
       tree.insert(t2.root.key)
-      puts
       min_heap.push(f1+f2, tree)
     end
+    return min_heap.min!
   end
 
   def encode_string(t, s)
