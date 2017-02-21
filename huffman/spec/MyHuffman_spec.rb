@@ -11,7 +11,14 @@ describe MyHuffman do
   end
 
   describe "#count_frequencies" do
-    
+    it "returns -1" do
+      expect(@huffman.count_frequencies("")).to eql(-1)
+    end
+    it "returns hash for Mississippi River" do
+      s = "Mississippi River"
+      hash = {"m"=>1, "i"=>5, "s"=>4, "p"=>2, " "=>1, "r"=>2, "v"=>1, "e"=>1}
+      expect(@huffman.count_frequencies(s)).to eql(hash)
+    end
   end
 
 end
