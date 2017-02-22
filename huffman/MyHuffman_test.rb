@@ -7,4 +7,6 @@ h = MyHuffman.new
 hash = h.count_frequencies("Mississippi River")
 # hash = h.count_frequencies("cccccccaaa  idddddd")
 htree = h.huffman(hash)
-h.traversal(htree)
+k = h.huffman({" " => 4})
+puts h.encode_string(k, "Miss")
+puts h.encode_string(htree, "Mississippi River")

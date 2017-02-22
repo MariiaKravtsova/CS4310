@@ -4,9 +4,6 @@ require_relative 'tree.rb'
 include Containers
 
 class MyHuffman
-  def initialize
-
-  end
 
   def count_frequencies(s)
     frequencies = Hash.new
@@ -42,23 +39,35 @@ class MyHuffman
     return min_heap.min!
   end
 
-  def traversal(t, s="")
+  def traversal(t, s="", code={})
     if t == nil
       return
     end
     if t.key != nil
-      return t.key
+      code[t.key] = s
+      return code
     end
     s = s + '0'
-    traversal(t.left, s)
-    puts s
+    code[t.key] = traversal(t.left, s, code)
     s = s.delete('0') + '1'
-    puts s
-    traversal(t.right, s)
+    code[t.key] = traversal(t.right, s, code)
+    code.delete(nil)
+    return code
   end
 
   def encode_string(t, s)
-    code = Hash.new()
-    puts code
+    s = s.downcase
+    encode = ""
+    code = traversal(t)
+    s.each_char do |c|
+      if code.key?(c)
+        encode.concat(code[c])
+      end
+    end
+    if encode.empty?
+      return -1
+    else
+      return encode
+    end
   end
 end
