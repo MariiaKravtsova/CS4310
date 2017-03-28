@@ -10,3 +10,7 @@ htree = h.huffman(hash)
 k = h.huffman({" " => 4})
 # puts h.encode_string(k, "Miss")
 puts h.encode_string(htree, "abc")
+<<<<<<< HEAD
+=======
+# outputs 0011
+>>>>>>> 332f08829d61ea1b15181bdafe7a060ad12b52a4
