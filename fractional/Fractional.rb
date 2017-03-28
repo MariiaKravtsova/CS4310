@@ -12,9 +12,9 @@ class Fractional
       i.value_index = i.benefit / weight
     end
     current_weight = 0
+
     # TODO sort
     while (current_weight < w.empty?) do
-      
     end
   end
 end
