@@ -1,20 +1,23 @@
-# require 'benchmark'
-# require 'rubygems'
-# require 'algorithms'
+require 'algorithms'
+require 'benchmark'
+require 'rubygems'
 require_relative 'Knapsack.rb'
-# include Containers
+include Containers
 
 class Fractional
 
   def fractional_knapsack(s, w)
+    maxheap = MaxHeap.new
     s.each do |i|
       i.final_amount = 0
-      i.value_index = i.benefit / weight
+      i.value_index = i.benefit / i.weight
+      maxheap.push(i.value_index, i)
     end
-    current_weight = 0
+    total_weight = 0
+    while (total_weight < w && maxheap.empty?) do
+      max_value = maxheap.max!
 
-    # TODO sort
-    while (current_weight < w.empty?) do
+
     end
   end
 end

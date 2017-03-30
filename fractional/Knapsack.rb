@@ -1,5 +1,5 @@
 class Knapsack
-  attr_accessor :benefit, :weight, :value
+  attr_accessor :benefit, :weight, :final_amount, :value_index
 
   def initialize()
     @benefit = nil # bi
