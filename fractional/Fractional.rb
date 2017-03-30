@@ -14,10 +14,13 @@ class Fractional
       maxheap.push(i.value_index, i)
     end
     total_weight = 0
-    while (total_weight < w && maxheap.empty?) do
-      max_value = maxheap.max!
-
-
+    while (total_weight < w and !maxheap.empty?)
+      temp = maxheap.max!
+      a = [temp.value_index, w - total_weight].max
+      puts a
+      temp.final_amount = a
+      total_weight = total_weight + a
+      puts total_weight
     end
   end
 end
