@@ -5,7 +5,7 @@ require_relative 'Knapsack.rb'
 include Containers
 
 class Fractional
-
+  
   def fractional_knapsack(s, w)
     maxheap = MaxHeap.new
     s.each do |i|
@@ -16,11 +16,10 @@ class Fractional
     total_weight = 0
     while (total_weight < w and !maxheap.empty?)
       temp = maxheap.max!
-      a = [temp.value_index, w - total_weight].max
-      puts a
+      a = [temp.value_index, w - total_weight].min
       temp.final_amount = a
       total_weight = total_weight + a
-      puts total_weight
     end
+    s.each { |i| puts i.final_amount }
   end
 end

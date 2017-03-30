@@ -24,4 +24,4 @@ five.benefit = 50
 five.weight = 1
 
 set = [one, two, three, four, five]
-f.fractional_knapsack(set, 20)
+f.fractional_knapsack(set, 100)
