@@ -20,6 +20,6 @@ class Fractional
       temp.final_amount = a
       total_weight = total_weight + a
     end
-    s.each { |i| puts i.final_amount }
+    # s.each { |i| puts i.final_amount }
   end
 end
