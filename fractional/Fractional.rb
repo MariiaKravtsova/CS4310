@@ -1,21 +1,17 @@
-require 'algorithms'
 require 'benchmark'
-require 'rubygems'
-require_relative 'Knapsack.rb'
-include Containers
+require_relative 'Item.rb'
 
 class Fractional
-  
+
   def fractional_knapsack(s, w)
-    maxheap = MaxHeap.new
     s.each do |i|
       i.final_amount = 0
       i.value_index = i.benefit / i.weight
-      maxheap.push(i.value_index, i)
     end
+    maxheap = s.sort_by{|obj| obj.value_index}
     total_weight = 0
     while (total_weight < w and !maxheap.empty?)
-      temp = maxheap.max!
+      temp = maxheap.pop
       a = [temp.value_index, w - total_weight].min
       temp.final_amount = a
       total_weight = total_weight + a

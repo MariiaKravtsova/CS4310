@@ -1,4 +1,4 @@
-class Knapsack
+class Item
   attr_accessor :benefit, :weight, :final_amount, :value_index
 
   def initialize(benefit, weight)
