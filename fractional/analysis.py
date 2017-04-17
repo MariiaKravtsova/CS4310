@@ -1,9 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-<<<<<<< HEAD
-=======
 from scipy import stats
->>>>>>> 45a67206289e8c1c13c38e4af9fb14c654235f8a
 import csv
 
 x = []
@@ -15,7 +12,6 @@ with open('sort.csv','r') as csvfile:
         x.append(int(row[0]))
         y.append(float(row[1]))
 
-<<<<<<< HEAD
 coefficients = np.polyfit(np.x*log(x),y,1) # Use log(x) as the input to polyfit.
 fit = np.poly1d(coefficients) 
 
@@ -24,7 +20,6 @@ plt.plot(x,fit(np.x*log(x)),"--", label="fit")
 plt.xlabel('x')
 plt.ylabel('y')
 plt.title('Interesting Graph\nCheck it out')
-=======
 or_coeff = np.polyfit(x, y, 1)
 p = np.poly1d(or_coeff)
 print('Equation: ', p)
@@ -54,7 +49,6 @@ plt.plot(x,lin(x),"-", label="n", color="yellow", linewidth=1.5)
 plt.xlabel('size')
 plt.ylabel('time')
 plt.title('Sort_by Analysis\n10,000 - 200,000 in 10,000 increments')
->>>>>>> 45a67206289e8c1c13c38e4af9fb14c654235f8a
 plt.legend()
 plt.show()
 
