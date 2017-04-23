@@ -1,15 +1,15 @@
 class Graph
-  attr_accessor :nodes
+  attr_accessor :vertices
   attr_accessor :edges
 
   def initialize
-    @nodes = []
+    @vertices = []
     @edges = []
   end
 
-  def add_node(node)
-    nodes << node
-    node.graph = self
+  def add_vertex(vertex)
+    vertices << vertex
+    vertex.graph = self
   end
 
   def add_edge(from, to, weight)
