@@ -1,5 +1,7 @@
 require 'benchmark'
 require_relative 'MyGraph'
+require_relative 'MyEdge'
+require_relative 'MyVertex'
 require 'set'
 
 class Kruskal
@@ -19,5 +21,6 @@ class Kruskal
             hash[edge.vertex2] = hash[edge.vertex2].union(hash[edge.vertex1])
         end
     end
+    t
   end
 end

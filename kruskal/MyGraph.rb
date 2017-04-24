@@ -1,3 +1,5 @@
+# Implementation by https://github.com/brianstorti/ruby-graph-algorithms/tree/master/kruskal
+
 class Graph
   attr_accessor :vertices
   attr_accessor :edges
