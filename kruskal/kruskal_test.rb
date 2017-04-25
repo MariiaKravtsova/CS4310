@@ -8,24 +8,24 @@ require_relative 'kruskal'
 kruskal = Kruskal.new
 arr = Array.new
 file = File.open('output3.csv', 'w')
-(1..12).each do |size|
+(1..10).each do |size|
 graph = Graph.new
 num = 0
 arr.clear
   # from size * 10 create an array with new vertices, and add as vertex
-  5000.times do |i|
+  (size*10000).times do |i|
     arr.push(Vertex.new(i))
     graph.add_vertex(arr[i])
   end
 
   i = 0
-  # num_edges = (arr.size*(arr.size-1))/2
-  (size*1000000).times do
+  num_edges = (arr.size*(arr.size-1))/2
+  num_edges.times do
     num = rand(arr.size)
     a = arr[num]
     num = rand(arr.size)
     b = arr[num]
-    w = rand(10000)
+    w = rand(1000)
     if a != b
       graph.add_edge(a, b, w)
     end
@@ -36,7 +36,7 @@ arr.clear
       kruskal.kruskal(graph)
     end
   end
-  file.write("#{size*1000000}, #{5000}, #{time.real}\n")
+  file.write("#{size*10000}, #{num_edges}, #{time.real/10}\n")
 end
 
 file.close

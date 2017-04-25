@@ -3,8 +3,8 @@ import numpy as np
 from scipy import stats
 import csv
 
-v = []
 e = []
+v = []
 y = []
 
 with open('output.csv','r') as csvfile:
@@ -14,11 +14,12 @@ with open('output.csv','r') as csvfile:
         e.append(int(row[1]))
         y.append(float(row[2]))
 
-coefficients = np.polyfit(e*np.log(e),y,1) # Use log(v) as the input to polyfit.
+a = (np.array(e)*(np.array(e)-1))/2
+coefficients = np.polyfit(a*np.log(e),y,1) # Use log(v) as the input to polyfit.
 fit = np.poly1d(coefficients) 
 
 plt.plot(e, y, 'ro', label='10-300k')
-plt.plot(e, fit(e*np.log(e)),"--", label="fit")
+plt.plot(e, fit(a*np.log(e)),"--", label="fit")
 plt.xlabel('edges size')
 plt.ylabel('time')
 plt.show()
