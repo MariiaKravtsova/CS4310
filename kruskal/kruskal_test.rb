@@ -8,7 +8,7 @@ require_relative 'kruskal'
 kruskal = Kruskal.new
 arr = Array.new
 file = File.open('output3.csv', 'w')
-(1..10).each do |size|
+(1..3).each do |size|
 graph = Graph.new
 num = 0
 arr.clear
@@ -32,9 +32,7 @@ arr.clear
   end
 
   time = Benchmark.measure do
-    10.times do
       kruskal.kruskal(graph)
-    end
   end
   file.write("#{size*10000}, #{num_edges}, #{time.real/10}\n")
 end
